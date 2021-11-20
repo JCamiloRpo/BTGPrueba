@@ -1,5 +1,9 @@
 # BTGPrueba
 Repo para guardar el desarrollo del software
+
+## Metodologia ágil
+Se utiliza un tablero canva en [Trello](https://trello.com/b/ChoSnOUj), para realizar un mapeo a gran escala de las tareas a realizar para el desarrollo
+
 ## Diagrama DB
 ![image](https://user-images.githubusercontent.com/60258315/142739808-31043820-b47f-46f4-9dd0-171c57c03d7d.png)
 - MongoDB
@@ -10,6 +14,12 @@ Repo para guardar el desarrollo del software
     - idClient: compuesto por un identificador unico y con el nombre del client
     - idRequest: compuesto por el numero de radicado y la fecha de creación
     - Además cada registro en la tabla tendra los demás atributos espeificados en el diagrama
+
+## Servidor API Rest
+
+
+## Aplicación
+
 
 ## Referencias
 - Diagramación hecha en [Visal Paradigm](https://online.visual-paradigm.com)
