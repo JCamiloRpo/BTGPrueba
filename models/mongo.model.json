@@ -1,0 +1,33 @@
+{
+    "_id"         :   "string",
+    "firstName"   :   "string",
+    "lastName"    :   "string",
+    "requests"    :   [{
+        "_id"             :    "string",
+        "type"            :   "string",
+        "creationDate"    :   "date-ISO",
+        "closedDate"      :   "date-ISO",
+        "area"            :   "string",
+        "content"         :   {
+            "reason"  :   "string",
+            "details" :   "string"
+        },
+        "response"        :   {
+            "user"    :   "string",
+            "details" :   "string"
+        },
+        "claim"           :   {
+            "_id"             :   "string",
+            "creationDate"    :   "date-ISO",
+            "closedDate"      :   "date-ISO",
+            "content"         :   {
+                "reason"  :   "string",
+                "details" :   "string"
+            },
+            "response"        :   {
+                "user"    :   "string",
+                "details" :   "string"
+            }
+        }
+    }]
+}

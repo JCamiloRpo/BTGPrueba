@@ -1,0 +1,11 @@
+{
+    "TableName" :   "db_PQRs",
+    "KeySchema" :   [
+        { "AttributeName": "IdClient", "KeyType": "HASH" },
+        { "AttributeName": "IdRequest", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+        { "AttributeName": "IdClient", "AttributeType": "S" },
+        { "AttributeName": "IdRequest", "AttributeType": "S" }
+    ]
+}
