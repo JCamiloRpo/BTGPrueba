@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const validate = require('jsonschema').validate;
-const bodySchema = require('../schema/bodyPQR.schema');
+const bodySchema = require('../schemas/bodyPQR.schema');
 const updatePQRClient = require('../controllers/updatePQRClient.controller');
 
 router.put('/update/pqr/:id', async (req, res) => {
