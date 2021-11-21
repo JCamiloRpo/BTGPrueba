@@ -1,0 +1,11 @@
+FROM node:14.17.0-alpine
+# Set working directory
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+WORKDIR /home/node/app
+# Copiar archivos
+COPY . ./
+# Instalar dependencias
+USER node
+RUN npm install
+# Star app
+CMD npm run start
