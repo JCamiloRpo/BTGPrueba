@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 router.get('/get/token', async (req, res) => {
     try{
-        const admin = req.header("admin");
+        const admin = !!req.header("admin");
 
         const token = jwt.sign({ admin }, process.env.SECRET_JWT);
 

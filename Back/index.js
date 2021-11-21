@@ -28,13 +28,6 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log('Mongodb connected')) 
   .catch(err => console.error('Mongodb error', err))
 
-// Rutas del API + middlewares
-app.use(env.API_PATH, require('./routes/getToken.route'));
-app.use(env.API_PATH, validateToken, require('./routes/getClients.route'));
-app.use(env.API_PATH, validateToken, require('./routes/getPQRsClient.route'));
-app.use(env.API_PATH, validateToken, require('./routes/updatePQRClient.route'));
-app.use(env.API_PATH, validateToken, require('./routes/createPQRClient.route'));
-
 // Rutas de healthCheck
 app.get(env.API_PATH+"/health-check", (req, res) => {
     res.json({
@@ -42,6 +35,13 @@ app.get(env.API_PATH+"/health-check", (req, res) => {
         message: "Health OK!"
     })
 });
+
+// Rutas del API + middlewares
+app.use(env.API_PATH, require('./routes/getToken.route'));
+app.use(env.API_PATH, validateToken, require('./routes/getClients.route'));
+app.use(env.API_PATH, validateToken, require('./routes/getPQRsClient.route'));
+app.use(env.API_PATH, validateToken, require('./routes/updatePQRClient.route'));
+app.use(env.API_PATH, validateToken, require('./routes/createPQRClient.route'));
 
 // Ruta Not Found
 app.use((req, res, next) => {
