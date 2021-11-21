@@ -35,6 +35,14 @@ app.use(env.API_PATH, validateToken, require('./routes/getPQRsClient.route'));
 app.use(env.API_PATH, validateToken, require('./routes/updatePQRClient.route'));
 app.use(env.API_PATH, validateToken, require('./routes/createPQRClient.route'));
 
+// Rutas de healthCheck
+app.get(env.API_PATH+"/health-check", (req, res) => {
+    res.json({
+        api: "PQR Prueba",
+        message: "Health OK!"
+    })
+});
+
 // Ruta Not Found
 app.use((req, res, next) => {
     res.status(404).send("Sorry cant find that!");
