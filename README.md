@@ -16,7 +16,7 @@ Se utiliza un tablero canva en [Trello](https://trello.com/b/ChoSnOUj), para rea
     - Además cada registro en la tabla tendra los demás atributos espeificados en el diagrama
 
 ## Servidor API Rest
-
+El servidor API se despliega con un contenedor a Heroku bajo con el dominio https://btg-pqr-prueba-api.herokuapp.com y se puede revisar el estado del servidor en la ruta [/api/health-check](https://btg-pqr-prueba-api.herokuapp.com/api/health-check)
 
 ## Aplicación
 
