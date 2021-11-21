@@ -5,9 +5,9 @@ Repo para guardar el desarrollo del software
 Se utiliza un tablero canva en [Trello](https://trello.com/b/ChoSnOUj), para realizar un mapeo a gran escala de las tareas a realizar para el desarrollo
 
 ## Diagrama DB
-![image](https://user-images.githubusercontent.com/60258315/142739808-31043820-b47f-46f4-9dd0-171c57c03d7d.png)
+![image](https://user-images.githubusercontent.com/60258315/142771388-7c62a577-4603-4361-a482-7a1bede047bd.png)
 - MongoDB
-  Se puede detallar el documento que quedaria para cada cliente en el archivo [mongo.model.json](models/mongo.model.json)
+  Se puede detallar el documento de PQR que quedaria para los cliente en el archivo [mongo.model.json](models/mongo.model.json)
 
 - DynamoDB
   En el caso de dynamo se crea el modelo como se muestra en el archivo [dynamo.model.json](models/dynamo.model.json), donde:
