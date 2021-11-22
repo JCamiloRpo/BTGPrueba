@@ -1,19 +1,20 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const getPQRsClient = require('../controllers/getPQRsClient.controller');
+const getPQRs = require('../controllers/getPQRs.controller');
 
 router.get('/get/pqr', async (req, res) => {
     try{
         const idClient = req.query.client;
-        if (!idClient) return res.status(400).json({ error: "Query param 'client' is required" })
 
-        const PQRs = await getPQRsClient(idClient);
+        let PQRs = []
+        if (idClient) PQRs = await getPQRs(idClient);
+        else if (res.admin) PQRs = await getPQRs();
 
         res.json({ PQRs });
     }
     catch (err){
         res.status(500).json({ err: err.message });
-        console.error("Error getPQRsClient.route", err);
+        console.error("Error getPQRs.route", err);
     }
 })
 

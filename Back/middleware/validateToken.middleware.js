@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
 
     try{
         const verified = jwt.verify(token, process.env.SECRET_JWT);
-        res.admin = verified;
+        res.admin = verified.admin === "true";
         next();
     }
     catch (err){
