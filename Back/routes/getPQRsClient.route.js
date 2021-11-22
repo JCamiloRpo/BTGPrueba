@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const jwt = require('jsonwebtoken');
 const getPQRsClient = require('../controllers/getPQRsClient.controller');
 
 router.get('/get/pqr', async (req, res) => {
@@ -8,7 +9,14 @@ router.get('/get/pqr', async (req, res) => {
 
         const PQRs = await getPQRsClient(idClient);
 
-        res.json(PQRs);
+        const admin = !!req.header("admin");
+        const token = jwt.sign({ admin }, process.env.SECRET_JWT);
+
+        res.json({
+            PQRs,
+            token,
+            admin
+        });
     }
     catch (err){
         res.status(500).json({ err: err.message });
