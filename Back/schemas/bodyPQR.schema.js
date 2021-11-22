@@ -42,8 +42,7 @@ const bodySchema = {
                     properties:{
                         user: { type: "string" },
                         details: { type: "string" }
-                    },
-                    required: [ "user", "details" ]
+                    }
                 }
             }
         }
