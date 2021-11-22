@@ -34,6 +34,12 @@ Evidencias:
   - https://user-images.githubusercontent.com/60258315/142918902-5fb764f2-d34e-46c7-a9b4-401a5de1f581.mp4
 
 ## Consideraciones
+La aplicación tiene 3 clientes registrados en mongo, los cuales tienen sus propiar PQR también almacenadas en mongo, entonces sentido, en la ventana de inicio se puede elegir entre uno de los 3 clientes para visualizar y gestionar sus PQR. Además pone a disposición en el misma ventana de inicio la opción de ingresar como admin, siendo este capaz de visualizar todas las PQRs exitentes de todos los clientes y dar respuesta a cualquier de ellas, así se puede simular la comunicación bidireccional de las PQR y poder aplicar las reglas de negocio:
+  - Solo reclamo a una petición o queja realizada hace mas de 5 días o que tenga una respuesta que no es de su agrado.
+  - Toda PQR tiene un codigo unico.
+  - Cada PQR puede ser consultada con su información y respuesta.
+  - Cada Reclamo puede ser consultado con su información, respuesta y Petición o Queja.
+
 Aunque el desarrollo de la plataforma no tenia como objetivo realizar una PWA y un desarrollo multiplataforma, se puede aprovechar para analizar ambos enfoques: con ambos desarrollos para aplicaciones hibridas se alcanza el mismo fin "disponibilidad en todos los sistemas", sin embargo personalmente se resulta mas factible y optimo el desarrollo de una PWA, debido a que no se necesitan generar los proyectos ni instaladores por separados, solo es el despliegue de la aplicación web con todas las configuraciones de una PWA para poder ser instalada en cualquier celular, mientras que utilizando algun framework como Ionic sería necesario personalizar los proyectos que genera (como se ve con el icono que puso en la apk).
 
 ## Referencias
