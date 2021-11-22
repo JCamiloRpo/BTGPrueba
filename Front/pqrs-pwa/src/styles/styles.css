@@ -6,4 +6,12 @@
 body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     background-color: white;
-  }
+}
+
+a.active {
+    background-color: #0240CF !important;
+}
+
+a.active_alt {
+    background-color: #B8CCEA !important;
+}

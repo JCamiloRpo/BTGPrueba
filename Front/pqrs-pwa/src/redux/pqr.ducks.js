@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { env } from 'process';
 
 // contants
-const URL = env.REACT_APP_SERVER_URL + env.REACT_APP_SERVER_PATH;
+const URL = process.env.REACT_APP_SERVER_URL + process.env.REACT_APP_SERVER_PATH;
 
 const dataInit = {
-    isLoading = null,
-    errMess = null,
-    PQRs = [],
+    isLoading: null,
+    errMess: null,
+    PQRs: [],
 };
 
 // types
@@ -25,6 +24,8 @@ export default function pqrReducer(state = dataInit, action){
             return { ...state, isLoading: false, errMess: null, ...payload };
         case PQRS_ERROR:
             return { ...state, isLoading: false, errMess: payload };
+        default:
+            return state;
     }
 }
 
@@ -41,7 +42,7 @@ export const getPQRsAction = () => async (dispatch, getState) => {
             headers: { token }
         };
 
-        const res = await axios.get(URL + env.REACT_APP_SERVER_PATH, config);
+        const res = await axios.get(URL + process.env.REACT_APP_SERVER_GET_PQRs_CLIENT, config);
         const data = await res.data;
 
         dispatch({ type: PQRS_SUCCESS, payload: data });
@@ -65,7 +66,8 @@ export const getPQRsClientAction = () => async (dispatch, getState) => {
             headers: { token }
         };
 
-        const res = await axios.get(URL + env.REACT_APP_SERVER_PATH, config);
+        const res = await axios.get(URL + process.env.REACT_APP_SERVER_GET_PQRs_CLIENT, config);
+        
         const data = await res.data;
 
         dispatch({ type: PQRS_SUCCESS, payload: data });
@@ -89,12 +91,14 @@ export const updatePQRClientAction = (id, changes) => async (dispatch, getState)
         const config = {
             headers: { token }
         };
-
-        const res = await axios.put(URL + env.REACT_APP_SERVER_PUT_PQR_CLIENT + `/:${id}`, { ...changes }, config);
+        delete changes.__v;
+        changes.claim = changes.claim ?? {};
+        changes.response = changes.response ?? {};
+        
+        const res = await axios.put(URL + process.env.REACT_APP_SERVER_PUT_PQR_CLIENT + `/${id}`, { ...changes }, config);
         const data = await res.data;
 
-        const { PQRs } = getState().pqr;
-        PQRs.map((item) => ( item.id === id ? data.PQR : item ));
+        const { PQRs } = getState().pqr.map((item) => ( item.id === id ? data.PQR : item ));
 
         dispatch({ type: PQRS_SUCCESS, payload: { PQRs } });
     }
@@ -117,8 +121,8 @@ export const createPQRClientAction = (pqr) => async (dispatch, getState) => {
         const config = {
             headers: { token }
         };
-
-        const res = await axios.put(URL + env.REACT_APP_SERVER_POST_PQR_CLIENT, { ...pqr }, config);
+        
+        const res = await axios.post(URL + process.env.REACT_APP_SERVER_POST_PQR_CLIENT, { ...pqr }, config);
         const data = await res.data;
 
         const { PQRs } = getState().pqr;

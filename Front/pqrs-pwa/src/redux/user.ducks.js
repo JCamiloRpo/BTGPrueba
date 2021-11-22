@@ -1,17 +1,16 @@
 import axios from 'axios';
-import { env } from 'process';
 
 // contants
-const URL = env.REACT_APP_SERVER_URL + env.REACT_APP_SERVER_PATH;
+const URL = process.env.REACT_APP_SERVER_URL + process.env.REACT_APP_SERVER_PATH;
 
 const dataInit = {
-    isLoading = null,
-    errMess = null,
-    clients = [],
-    admin = null,
+    isLoading: false,
+    errMess: null,
+    clients: [],
+    admin: null,
     id: "",
     name: "",
-    token = ""
+    token: ""
 };
 
 // types
@@ -25,21 +24,22 @@ const TOKEN_ERROR = "TOKEN_ERROR";
 
 // reducer
 export default function userReducer(state = dataInit, action){
-    const { type, payload } = action;
-    switch(type){
+    switch(action.type){
         case CLIENTS_LOADING:
             return { ...state, isLoading: true, errMess: null };
         case CLIENTS_SUCCESS:
-            return { ...state, isLoading: false, errMess: null, ...payload };
+            return { ...state, isLoading: false, errMess: null, ...action.payload };
         case CLIENTS_ERROR:
-            return { ...state, isLoading: false, errMess: payload };
+            return { ...state, isLoading: false, errMess: action.payload };
 
         case TOKEN_LOADING:
             return { ...state, isLoading: true, errMess: null };
         case TOKEN_SUCCESS:
-            return { ...state, isLoading: false, errMess: null, ...payload };
+            return { ...state, isLoading: false, errMess: null, ...action.payload };
         case TOKEN_ERROR:
-            return { ...state, isLoading: false, errMess: payload };
+            return { ...state, isLoading: false, errMess: action.payload };
+        default:
+            return state;
     }
 }
 
@@ -51,7 +51,7 @@ export const getClientsAction = () => async (dispatch) => {
     try{
         dispatch({ type: CLIENTS_LOADING });
 
-        const res = await axios.get(URL + env.REACT_APP_SERVER_GET_CLIENTS);
+        const res = await axios.get(URL + process.env.REACT_APP_SERVER_GET_CLIENTS);
         const data = await res.data;
 
         dispatch({ type: CLIENTS_SUCCESS, payload: data });
@@ -70,13 +70,19 @@ export const getTokenAction = (id, name, admin) => async (dispatch) => {
     try{
         dispatch({ type: TOKEN_LOADING });
 
-        const res = await axios.get(URL + env.REACT_APP_SERVER_GET_TOKEN, { headers: { admin }});
+        const res = await axios.get(URL + process.env.REACT_APP_SERVER_GET_TOKEN, { headers: { admin }});
         const data = await res.data;
-
+        
         dispatch({ type: TOKEN_SUCCESS, payload: { ...data, id, name }});
     }
     catch (err){
         console.error("Error getToken", err.message);
         dispatch({ type: TOKEN_ERROR, payload: err.message });
     }
+}
+
+export const exitClientAction = () => (dispatch) => {
+    dispatch({ type: CLIENTS_LOADING });
+    
+    dispatch({ type: CLIENTS_SUCCESS, payload: { ...dataInit } });
 }
