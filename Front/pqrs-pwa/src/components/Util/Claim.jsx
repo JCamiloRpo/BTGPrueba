@@ -15,41 +15,41 @@ export default function Claim(props){
     return (
         <React.Fragment>
             <Grid item xs={12} mb="14px" px="14px">
-                <Typography sx={{ fontWeight:"600", wordBreak:"break-all" }}>
+                <Typography sx={{ fontWeight:"600"}}>
                     Reclamo:
                 </Typography>
             </Grid>
             <Grid item xs={12} mb="14px" px="14px">
-                <Box px="10px" >
+                <Box>
                     { claim ? 
-                        <Grid container justifyContent="center">
-                            <Grid item xs={12} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
-                                    <b>Radicado:</b>{claim._id}
+                        <Grid container justifyContent="center" sx={{ wordBreak:"break-all" }}>
+                            <Grid item xs={12} mb="14px">
+                                <Typography >
+                                    <b>Radicado:</b> {claim._id}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={12} md={6} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
-                                    <b>Fecha de creación:</b>{claim.creationDate.split("T")[0]}
+                            <Grid item xs={12} md={6} mb="14px">
+                                <Typography >
+                                    <b>Fecha de creación:</b> {claim.creationDate.split("T")[0]}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={12} md={6} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
-                                    <b>Fecha de cierre:</b>{claim.closedDate?.split("T")[0]}
+                            <Grid item xs={12} md={6} mb="14px">
+                                <Typography >
+                                    <b>Fecha de cierre:</b> {claim.closedDate?.split("T")[0]}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} mb="14px" px="14px">
+                            <Grid item xs={12} mb="14px">
+                                <Typography >
+                                    <b>Motivo:</b> {claim.content.reason}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} mb="14px">
                                 <Typography>
-                                    Detalles:
+                                    <b>Detalles:</b>
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
-                                    Motivo: {claim.content.reason}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
+                            <Grid item xs={12} mb="14px">
+                                <Typography >
                                     {claim.content.details}
                                 </Typography>
                             </Grid>
@@ -60,8 +60,8 @@ export default function Claim(props){
                         </Grid>
                     :
                         (admin ?
-                            <Grid item xs={12} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
+                            <Grid item xs={12} mb="14px">
+                                <Typography >
                                     No hay reclamo
                                 </Typography>
                             </Grid>

@@ -7,26 +7,26 @@ export default function Response(props){
     return (
         <React.Fragment>
             <Grid item xs={12} mb="14px" px="14px" >
-                <Typography sx={{ fontWeight:"600", wordBreak:"break-all" }}>
+                <Typography sx={{ fontWeight:"600"}}>
                     Respuesta:
                 </Typography>
             </Grid>
             <Grid item xs={12} mb="14px" px="14px">
-                <Box px="10px" >
+                <Box >
                     { response  ? 
                         <Grid container>
-                            <Grid item xs={6} mb="14px" px="14px">
+                            <Grid item xs={12} mb="14px">
+                                <Typography >
+                                    <b>Usuario:</b> {response.user}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} mb="14px">
                                 <Typography>
-                                    Detalles:
+                                    <b>Detalles:</b>
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6} mb="14px" px="14px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
-                                    Usuario: {response.user}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={12} md={6} px="14px" pl="32px">
-                                <Typography sx={{ wordBreak:"break-all" }}>
+                            <Grid item xs={12} md={6}>
+                                <Typography >
                                     {response.details}
                                 </Typography>
                             </Grid>

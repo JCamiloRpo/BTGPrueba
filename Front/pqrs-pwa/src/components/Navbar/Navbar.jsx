@@ -10,7 +10,7 @@ import BTGPactual from '../../images/btgpactual.png'
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 function NavbarMobile(props){
-    const { isOpen, onClick, anchor, name } = props;
+    const { isOpen, onClick, anchor, name, onExit } = props;
 
     return(
         <React.Fragment>
@@ -27,8 +27,8 @@ function NavbarMobile(props){
                 </List>
                 <Divider />
                 <List sx={{ minWidth:"200px" }}>
-                    <ListItem onClick={onClick} buttom component={NavLink} to={process.env.REACT_APP_BASE_PATH + "/pqr"} >
-                        <Button variant="contained" color="secondary" onClick={onClick} fullWidth >
+                    <ListItem >
+                        <Button variant="contained" color="secondary" fullWidth onClick={() => onExit()} component={Link} to={process.env.REACT_APP_BASE_PATH} >
                             Salir
                         </Button>
                     </ListItem>
@@ -105,7 +105,7 @@ export default function Navbar() {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <NavbarMobile isOpen={menuMobile} anchor={anchorMobile} name={name} onClick={handleMenuMobile} />
+            <NavbarMobile isOpen={menuMobile} anchor={anchorMobile} name={name} onClick={handleMenuMobile} onExit={onClick} />
             <Offset />
         </React.Fragment>
     );

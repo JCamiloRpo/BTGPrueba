@@ -12,7 +12,7 @@ function TabPanel(props) {
     return (
         <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other} >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p:"6px" }}>
                     {children}
                 </Box>
             )}
@@ -68,7 +68,7 @@ export default function Dashboard() {
     }, [isLoading, admin, state, dispatch]);
 
     return(
-        <Box pt="60px" pb="60px" px="12%">
+        <Box py="60px" px="12%">
             <Box display={{ xs:"block", md:"flex" }} mx={{ xs:"0px", md:"60px" }} mb="60px" width="auto" >
                 <Box m={1} sx={{ wordBreak:"break-all" }} textAlign="center" flexGrow={1} >
                     {admin === "true" ?

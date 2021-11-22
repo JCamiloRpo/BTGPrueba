@@ -21,41 +21,43 @@ export default function AccordionCard(props){
     return(
         <Accordion elevation={5}>
             <AccordionSummary expandIcon={<ExpandMore />}>
-                <Box flexGrow={1} >
-                    <Typography sx={{ fontWeight:"600", wordBreak:"break-all" }} >
-                        Radicado: {radicado}
-                    </Typography>
-                </Box>
-                <Box flexGrow={1} >
-                    <Typography sx={{ fontWeight:"600", wordBreak:"break-all" }} >
-                        Area: {area}
-                    </Typography>
-                </Box>
+                <Grid container justifyContent="center">
+                    <Grid item xs={12} md={6} >
+                        <Typography sx={{ fontWeight:"600" }} >
+                            Radicado: {radicado}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6} >
+                        <Typography sx={{ fontWeight:"600" }} >
+                            Area: {area}
+                        </Typography>
+                    </Grid>
+                </Grid>
             </AccordionSummary>
             <AccordionDetails >
-                <Grid container justifyContent="center">
-                    <Grid item xs={12} md={6} mb="14px" px="14px">
-                        <Typography sx={{ wordBreak:"break-all" }}>
+                <Grid container justifyContent="center" sx={{ wordBreak:"break-all" }}>
+                    <Grid item xs={12} md={6} mb="14px">
+                        <Typography >
                             <b>Fecha de creación:</b> {creationDate.split("T")[0]}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={6} mb="14px" px="14px">
-                        <Typography sx={{ wordBreak:"break-all" }}>
-                            <b>Fecha de cierre:</b>{closedDate?.split("T")[0]}
+                    <Grid item xs={12} md={6} mb="14px">
+                        <Typography >
+                            <b>Fecha de cierre:</b> {closedDate?.split("T")[0]}
                         </Typography>
                     </Grid>
-                    <Grid item xs={6} mb="14px" px="14px">
-                        <Typography sx={{ fontWeight:"600", wordBreak:"break-all" }}>
-                            Detalles:
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={6} mb="14px" px="14px">
-                        <Typography sx={{ wordBreak:"break-all" }}>
+                    <Grid item xs={12} mb="14px">
+                        <Typography >
                             <b>Motivo:</b> {reason}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} px="14px" pl="28px" >
-                        <Typography sx={{ wordBreak:"break-all" }}>
+                    <Grid item xs={12} mb="14px">
+                        <Typography >
+                            <b>Detalles:</b>
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} px="14px" >
+                        <Typography >
                             {details}
                         </Typography>
                     </Grid>
