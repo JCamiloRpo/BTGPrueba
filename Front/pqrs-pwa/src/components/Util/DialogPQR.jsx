@@ -11,7 +11,7 @@ function generateRadicado(){
         return x;
     }
     const date = new Date();
-    return addZero(date.getHours(), 2) + addZero(date.getMinutes(), 2) + addZero(date.getSeconds(), 2) + addZero(date.getMilliseconds(), 3);
+    return "000"+addZero(date.getHours(), 2) + addZero(date.getMinutes(), 2) + addZero(date.getSeconds(), 2) + addZero(date.getMilliseconds(), 3);
 
 }
 

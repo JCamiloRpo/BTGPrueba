@@ -94,7 +94,6 @@ export const updatePQRClientAction = (id, changes) => async (dispatch, getState)
         delete changes.__v;
         changes.claim = changes.claim ?? {};
         changes.response = changes.response ?? {};
-        
         const res = await axios.put(URL + process.env.REACT_APP_SERVER_PUT_PQR_CLIENT + `/${id}`, { ...changes }, config);
         const data = await res.data;
 

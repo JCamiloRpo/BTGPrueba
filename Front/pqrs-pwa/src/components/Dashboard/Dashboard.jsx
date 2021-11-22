@@ -22,6 +22,8 @@ function TabPanel(props) {
 
 export default function Dashboard() {
     const dispatch = useDispatch();
+    
+    const { PQRs, isLoading } = useSelector(store => store.pqr);
 
     const { admin } = useSelector(store => store.user);
 
@@ -36,8 +38,7 @@ export default function Dashboard() {
     };
 
     const handleDialog= (open, init=true) => {
-        setState({ ...state, open });
-        state.init = init;
+        setState({ ...state, open, init});
     }
 
     React.useEffect(() => {
@@ -53,10 +54,18 @@ export default function Dashboard() {
             }
             setState({ ...state, init: true });
         }
+        else if (isLoading){
+            if(admin === "true"){
+                console.log("Dashboard| getPQRs");
+                dispatch(getPQRsAction());
+            }
+            else{
+                console.log("Dashboard| getPQRsClient");
+                dispatch(getPQRsClientAction());
+            }
+        }
 
-    }, [admin, state, dispatch]);
-
-    const { PQRs } = useSelector(store => store.pqr);
+    }, [isLoading, admin, state, dispatch]);
 
     return(
         <Box pt="60px" pb="60px" px="12%">
