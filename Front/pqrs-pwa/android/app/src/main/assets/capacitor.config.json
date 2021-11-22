@@ -1,0 +1,6 @@
+{
+	"appId": "com.btg.prueba.app",
+	"appName": "pqrs-pwa",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
