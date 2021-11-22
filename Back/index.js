@@ -37,8 +37,9 @@ app.get(env.API_PATH+"/health-check", (req, res) => {
 });
 
 // Rutas del API + middlewares
+app.use(env.API_PATH, require('./routes/getToken.route'));
 app.use(env.API_PATH, require('./routes/getClients.route'));
-app.use(env.API_PATH, require('./routes/getPQRsClient.route'));
+app.use(env.API_PATH, validateToken, require('./routes/getPQRsClient.route'));
 app.use(env.API_PATH, validateToken, require('./routes/updatePQRClient.route'));
 app.use(env.API_PATH, validateToken, require('./routes/createPQRClient.route'));
 

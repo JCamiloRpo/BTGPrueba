@@ -9,14 +9,7 @@ router.get('/get/pqr', async (req, res) => {
 
         const PQRs = await getPQRsClient(idClient);
 
-        const admin = !!req.header("admin");
-        const token = jwt.sign({ admin }, process.env.SECRET_JWT);
-
-        res.json({
-            PQRs,
-            token,
-            admin
-        });
+        res.json({ PQRs });
     }
     catch (err){
         res.status(500).json({ err: err.message });
