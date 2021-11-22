@@ -98,7 +98,7 @@ export const updatePQRClientAction = (id, changes) => async (dispatch, getState)
         const res = await axios.put(URL + process.env.REACT_APP_SERVER_PUT_PQR_CLIENT + `/${id}`, { ...changes }, config);
         const data = await res.data;
 
-        const { PQRs } = getState().pqr.map((item) => ( item.id === id ? data.PQR : item ));
+        const PQRs = getState().pqr.PQRs.map((item) => ( item.id === id ? data.PQR : item ));
 
         dispatch({ type: PQRS_SUCCESS, payload: { PQRs } });
     }
